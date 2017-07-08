@@ -43,6 +43,15 @@
     left: 20px;
 }
 
-h1, h5{
+h1, h4, h5{
     text-align: center;
+}
+
+.panel-default > .panel-heading {
+    border-radius: 5px;
+    background-color: #e6eeff
+}
+
+.list-group-item {
+    border-radius: 5px;
 }
