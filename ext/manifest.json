@@ -1,0 +1,28 @@
+{
+  "name": "andChill",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "Save 30 seconds of boredom by automatically skipping Netflix show introductions and credits",
+  "homepage_url": "https://github.com/jakewski",
+  "options_page": "src/options/options.html",
+  "icons": {
+    "16": "icons/television_alt.png",
+    "48": "icons/television_alt.png",
+    "128": "icons/television_alt.png"
+  },
+  "default_locale": "en",
+  "background": {
+    "page": "src/bg/background.html",
+    "persistent": true
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.netflix.com/*"
+      ],
+      "js": [
+        "src/inject/inject.js"
+      ]
+    }
+  ]
+}
