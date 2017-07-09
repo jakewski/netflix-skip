@@ -2,9 +2,24 @@ const skipIntro = document.getElementById('skipIntro');
 const skipCredits = document.getElementById('skipCredits');
 const keepWatching = document.getElementById('keepWatching');
 
-setSwitchFromChromeStorage('skipIntro', skipIntro);
-setSwitchFromChromeStorage('skipCredits', skipCredits);
-setSwitchFromChromeStorage('keepWatching', keepWatching);
+chrome.storage.sync.get('isInstalled', (obj) => {
+    if(!obj.isInstalled){
+        setChromeStorage('skipIntro', true)
+        setChromeStorage('skipCredits', true)
+        setChromeStorage('keepWatching', true)
+        setChromeStorage('isInstalled', true)
+        skipIntro.checked = true;
+        skipCredits.checked = true;
+        keepWatching.checked = true;
+    } else {
+        setSwitchFromChromeStorage('skipIntro', skipIntro);
+        setSwitchFromChromeStorage('skipCredits', skipCredits);
+        setSwitchFromChromeStorage('keepWatching', keepWatching);
+
+    }
+})
+
+
 
 document.addEventListener('DOMContentLoaded', function () {
       skipIntro.addEventListener('change', toggleIntro);
